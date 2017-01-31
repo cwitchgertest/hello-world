@@ -1,23 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hello.world</groupId>
 	<artifactId>hello-world</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>2.7-SNAPSHOT</version>
 
-	<!-- Added For Deployment -->
 	<distributionManagement>
 		<repository>
 			<id>nexus-releases</id>
 			<url>http://192.168.99.100:32777/nexus/content/repositories/releases</url>
 		</repository>
 	</distributionManagement>
+
+
 	<scm>
 		<connection>scm:git:git@github.com:cwitchgertest/hello-world.git</connection>
 		<url>scm:git:git@github.com:cwitchgertest/hello-world.git</url>
 		<developerConnection>scm:git:git@github.com:cwitchgertest/hello-world.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
+	  <tag>HEAD</tag>
+  </scm>
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -31,7 +31,6 @@
 				</configuration>
 			</plugin>
 
-			<!-- Added For Deployment -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
@@ -44,33 +43,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>releases</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.sonatype.plugins</groupId>
-						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.5.1</version>
-						<executions>
-							<execution>
-								<id>default-deploy</id>
-								<phase>deploy</phase>
-								<goals>
-									<goal>deploy</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<serverId>nexus-releases</serverId>
-							<nexusUrl>http://192.168.99.100:32777/nexus</nexusUrl>
-							<skipStaging>true</skipStaging>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
